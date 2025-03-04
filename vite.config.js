@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/historyMap',
+  base: '/historyMap/',
   server: {
     host: true, // 或 '0.0.0.0'，允许外部访问
     port: 5173, // 设置端口号
