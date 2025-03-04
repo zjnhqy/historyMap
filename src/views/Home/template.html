@@ -1,0 +1,139 @@
+<div ref="container" class="home">
+    <div class="header">
+            <h1 class="digital-platform"><b>百川归海：四川大学数字化平台</b></h1>
+    </div>
+    <div class="timeline-container">
+        <div class="module">四川大学校址变迁历史沿革</div>
+        <d-timeline  time-position="bottom">
+            <d-timeline-item time="1896" position="left">
+
+                <span></span> <button ref="btn1" class="school-name" @click="goToSchoolDetails(1)">
+                    四川中西学堂
+                </button>
+            </d-timeline-item>
+
+            <d-timeline-item time="1902年" position="left">
+                <button ref="btn2" class="school-name" data-1="true" @click="goToSchoolDetails(2)">
+                    四川通省大学堂<br>四川省城高等学堂
+                </button>
+            </d-timeline-item>
+
+            <d-timeline-item time="1906年" position="left">
+                <button ref="btn3" class="school-name" @click="goToSchoolDetails(3)">
+                    四川通省师范学堂
+                </button>
+            </d-timeline-item>
+            <d-timeline-item time="1906年" position="right">
+                <div v-if="showButtons" ref="buttonContainer" class="school-buttons">
+                    <button class="school-name" data-3="true"@click="goToSchoolDetails(3)">四川通省法政学堂</button>
+                    <button class="school-name" data-3="true" @click="goToSchoolDetails(3)">四川通省法政学堂</button>
+                    <button class="school-name" data-3="true" @click="goToSchoolDetails(3)">四川通省法政学堂</button>
+                </div>
+            </d-timeline-item>
+
+            
+
+            <d-timeline-item time="1910年" position="right">
+                <button ref="btn4" class="school-name" @click="goToSchoolDetails(4)">
+                    华西协合大学
+                </button>
+            </d-timeline-item>
+            <d-timeline-item time="1916年" position="left">
+                <button ref="btn5" class="school-name" data-1="true" @click="goToSchoolDetails(5)">
+                    国立成都高等师范学校
+                </button>
+            </d-timeline-item>
+
+            <!-- 1926 -->
+            <d-timeline-item time="1926年" position="left">
+                <button ref="btn6" class="school-name" @click="goToSchoolDetails(6)">
+                    国立成都大学
+                </button>
+            </d-timeline-item>
+
+            <!-- 1927 -->
+            <d-timeline-item time="1927年" position="left">
+                <button ref="btn7" class="school-name" data-1="true" @click="goToSchoolDetails(7)">
+                    国立成都师范大学
+                </button>
+            </d-timeline-item>
+
+            <!-- 1931 -->
+            <d-timeline-item time="1931年" position="left">
+                <button ref="btn8" class="school-name" @click="goToSchoolDetails(8)">
+                    国立四川大学
+                </button>
+            </d-timeline-item>
+
+            <!-- 1933 -->
+            <d-timeline-item time="1933年" position="right">
+                <button ref="btn9" class="school-name" @click="goToSchoolDetails(9)">
+                    私立华西协和大学
+                </button>
+            </d-timeline-item>
+
+            <!-- 1950 -->
+            <d-timeline-item time="1950年" position="left">
+                <button ref="btn10" class="school-name" @click="goToSchoolDetails(10)">
+                    四川大学
+                </button>
+            </d-timeline-item>
+
+            <!-- 1951 -->
+            <d-timeline-item time="1951年" position="right">
+                <button ref="btn11" class="school-name" @click="goToSchoolDetails(11)">
+                    华西大学
+                </button>
+            </d-timeline-item>
+
+            <!-- 1951 -->
+            <d-timeline-item time="1952年" position="left">
+                <button ref="btn17" class="school-name" data-17="true" @click="goToSchoolDetails(11)">
+                    四川化学工业学院
+                </button>
+            </d-timeline-item>
+
+            <d-timeline-item time="1954年" position="left">
+                <button ref="btn18" class="school-name" data-18="true" @click="goToSchoolDetails(11)">
+                    成都工学院
+                </button>
+            </d-timeline-item>
+
+            <!-- 1950 -->
+            <d-timeline-item time="1978年" position="left">
+                <button ref="btn19" class="school-name" data-19="true" @click="goToSchoolDetails(12)">
+                    成都科技大学
+                </button>
+            </d-timeline-item>
+
+            <!-- 1951 -->
+            <d-timeline-item time="1985年" position="right">
+                <button ref="btn13" class="school-name" @click="goToSchoolDetails(13)">
+                    华西医科大学
+                </button>
+            </d-timeline-item>
+
+            <!-- 1953 -->
+            <d-timeline-item time="1994年" position="left">
+                <button ref="btn14" class="school-name" @click="goToSchoolDetails(14)">
+                    四川联合大学
+                </button>
+            </d-timeline-item>
+
+            <!-- 1978 -->
+            <d-timeline-item time="1998年" position="left">
+                <button ref="btn15" class="school-name" @click="goToSchoolDetails(15)">
+                    四川大学
+                </button>
+            </d-timeline-item>
+            <!-- 更多时间轴项... -->
+        </d-timeline>
+        </div>
+
+        <!-- 定义箭头 marker，并使用 polyline 绘制折线路径 -->
+        <svg class="connector-svg">
+            <polyline v-for="(line, index) in lines" :key="index" :points="line.points"
+                :stroke="line.stroke || '#409EFF'" :stroke-width="line.strokeWidth || 2" fill="none"
+                :stroke-dasharray="line.strokeDasharray || ''" marker-end="url(#arrowhead)" />
+        </svg>
+    </div>

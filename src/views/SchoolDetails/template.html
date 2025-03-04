@@ -1,0 +1,50 @@
+
+    <div class="school-details">
+        <div class="header">
+            <h1 class="digital-platform"><b>百川归海：四川大学数字化平台</b></h1>
+            <h1 class="info">{{ school.name }} ({{ school.year }})</h1>
+
+        </div>
+        <div class="tabs">
+            <button @click="activeTab = '地理位置'">地理位置</button>
+            <!-- <button @click="activeTab = '平面分布'">平面分布</button> -->
+            <button @click="activeTab = '景观建筑'">景观建筑</button>
+            <button @click="activeTab = '沿革变迁'">沿革变迁</button>
+            <button @click="activeTab = '杰出人物'">杰出人物</button>
+        </div>
+        <div class="content" v-if="activeTab === '景观建筑' || activeTab === '杰出人物'">
+            <div class="left-panel">
+                <div v-for="(item, index) in activeItems" :key="index" class="item"
+                    :class="{ active: currentIndex === index }" @click="currentIndex = index">
+                    {{ item.title }}
+                </div>
+            </div>
+            <div class="right-panel">
+                <div class="image-container">
+                    <img :src="activeItems[currentIndex].image" alt="Image" />
+                </div>
+                <div class="text-container">
+                    <p class="history-text">{{ activeItems[currentIndex].text }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="content" v-else>
+            <div v-if="activeTab === '地理位置'" class="geo-container">
+                <div class="image-wrapper">
+                    <img ref="imgEl" :src="school.locationImage" alt="地理位置图片" :style="{
+                        transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`,
+                        width: imgWidth + 'px',
+                        height: imgHeight + 'px'
+                    }" @mousedown="startDrag" @wheel.prevent="handleZoom" @load="initImage" />
+                </div>
+                <p class="text-container">{{ school.location }}</p>
+
+                <!-- 其他内容保持不变 -->
+            </div>
+
+            <div v-if="activeTab === '沿革变迁'">
+                <p class="history-text">{{ school.history }}</p>
+            </div>
+        </div>
+
+    </div>
